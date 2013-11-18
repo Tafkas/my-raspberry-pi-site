@@ -2,4 +2,66 @@
   <div class="container">
     <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
   </div>
-</div>      
+</div>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highcharts/2.3.5/highcharts.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+      $.ajax({
+        type: "GET",
+        url: GetChartXml(),
+        dataType: "xml",
+        success: function(xml) {
+          var series = []
+
+          //define series
+          $(xml).find("entry").each(function() {
+            var seriesOptions = {
+              name: $(this).text(),
+              data: []
+            };
+            options.series.push(seriesOptions);
+          });
+
+          //populate with data
+          $(xml).find("row").each(function() {
+            var t = parseInt($(this).find("t").text()) * 1000
+
+            $(this).find("v").each(function(index) {
+              var v = parseFloat($(this).text())
+              v = v || null
+              if (v != null) {
+                options.series[index].data.push([t, v])
+              };
+            });
+          });
+
+          options.title.text = GetChartTitle()
+          $.each(series, function(index) {
+            options.series.push(series[index]);
+          });
+
+          //add sunrise and sunset
+          if (urlParameter != '1y' && urlParameter != '3m')
+          {
+            options.xAxis.plotBands = []
+            for (var i = 31; i >= 0; i--) {
+              var d = new Date();
+              d.setHours(0,0,0,0);
+              d.setDate(d.getDate()-i);
+              var sunrise = d.getTime()+computeSunrise(dayOfYear(), true);
+              var sunset = d.getTime()+computeSunrise(dayOfYear(), false);
+              options.xAxis.plotBands.push({
+                from: sunrise,
+                to: sunset,
+                color: '#FCFFC5'
+              });
+            };
+          };
+          chart = new Highcharts.Chart(options);
+        }
+      });
+    });
+  </script>

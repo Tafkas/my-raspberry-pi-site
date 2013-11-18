@@ -16,13 +16,11 @@
   
   <body class="<%= page_classes %>">
       <div id="wrap">
-          <%= partial "header" %>
+      <%= partial "header" %>
           <div class="container">
-              <%= yield %>
+          <%= yield %>
           </div>
       </div>
-    <%= partial "footer" %>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
+    <%= partial "footer" %>    
   </body>
 </html>
