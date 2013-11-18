@@ -8,12 +8,21 @@
     
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title || "The Middleman" %></title>
-    
-    <%= stylesheet_link_tag "normalize", "all" %>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "custom", "sticky-footer-navbar" %>
     <%= javascript_include_tag  "all" %>
   </head>
   
   <body class="<%= page_classes %>">
-    <%= yield %>
+      <div id="wrap">
+          <%= partial "header" %>
+          <div class="container">
+              <%= yield %>
+          </div>
+      </div>
+    <%= partial "footer" %>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
   </body>
 </html>
