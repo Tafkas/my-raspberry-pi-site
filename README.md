@@ -1,0 +1,1 @@
+Website based on static site generator [Middleman](http://middlemanapp.com/) for my RaspberryPi.
