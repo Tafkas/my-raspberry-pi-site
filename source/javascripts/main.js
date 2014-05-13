@@ -24,6 +24,7 @@ function GetChartXml() {
     case "1m":
     case "3m":
     case "1y":
+    case "1yminmax":
         return "data/" + urlPath + urlParameter + ".xml";
     }
     return "data/" + urlPath + "24h.xml";
@@ -48,6 +49,8 @@ function GetChartTitle() {
         return type + " of the last 3 month";
     case "1y":
         return type + " of the last year";
+    case "1yminmax":
+        return "Min-Max " + type + " of the last year";
     }
     return type + " of the last 24 hours";
 }

@@ -3,8 +3,8 @@
     <p class="text-muted credit"><a href="http://blog.tafkas.net">© Tafkas</a></p>
   </div>
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highcharts/2.3.5/highcharts.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highcharts/4.0.1/highcharts.js"></script>
 <%= javascript_include_tag  "all", "main", "chart" %>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -44,7 +44,8 @@
           });
 
           //add sunrise and sunset
-          if (urlParameter != '1y' && urlParameter != '3m')
+          no_sun = ['1yminmax', '1y', '3m'];     
+          if ($.inArray(urlParameter, no_sun) == -1) 
           {
             options.xAxis.plotBands = []
             for (var i = 31; i >= 0; i--) {
