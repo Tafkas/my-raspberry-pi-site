@@ -9,9 +9,7 @@
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title || "The Middleman" %></title>
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <%= stylesheet_link_tag "custom", "sticky-footer-navbar" %>
-    <%= javascript_include_tag  "all" %>
   </head>
   
   <body class="<%= page_classes %>">
@@ -21,6 +19,7 @@
           <%= yield %>
           </div>
       </div>
-    <%= partial "footer" %>    
+    <%= partial "footer" %>
+    <%= javascript_include_tag  "all" %>    
   </body>
 </html>
