@@ -15,8 +15,7 @@ options = {
     subtitle: {
         text: ''
     },
-    colors: ['#4572A7', '#AA4643', '#89A54E', '#80699B', '#3D96AE', 
-       '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'],
+    colors: ["#5982B6", "#B07629", "#D24394", "#579140", "#A660D4", "#CD4B45", "#9E5E8D"],
     xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: {
