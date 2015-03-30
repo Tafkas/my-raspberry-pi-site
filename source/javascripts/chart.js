@@ -122,7 +122,7 @@ function computeSunrise(day, sunrise) {
     }
 
     //convert UT value to local time zone of latitude/longitude
-    var localT = UT + 1;
+    var localT = UT + 2;
 
     //convert to Milliseconds
     return localT * 3600 * 1000;
